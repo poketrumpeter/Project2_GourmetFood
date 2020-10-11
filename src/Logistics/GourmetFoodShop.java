@@ -20,4 +20,9 @@ public class GourmetFoodShop implements Store{
     public void close() {
 
     }
+
+    @Override
+    public void respondToOrder(Order newOrder) {
+
+    }
 }
