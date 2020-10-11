@@ -1,5 +1,7 @@
 package People;
 
+import Logistics.Order;
+
 public class BuisnessCustomer extends defaultCustomer{
 
     public BuisnessCustomer(String name) {
@@ -11,8 +13,8 @@ public class BuisnessCustomer extends defaultCustomer{
     //Pass in collection of Roll Objects?
     //Return Bool if Order was fulfilled or not
     @Override
-    public boolean buyRolls() {
-        return false;
+    public Order makeOrder(Order currentOrder) {
+        return null;
     }
 
     //Method to respond to Roll Outages

@@ -27,7 +27,9 @@ public abstract class defaultRoll implements Roll{
     }
 
     //Function to call to add extras, Will be the same for all Rolls
-    public abstract void addExtras();
+    public void addExtras(){
+
+    }
 
     //FUnction to order more inventory for restock
     void newInventory(){

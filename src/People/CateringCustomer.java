@@ -1,5 +1,7 @@
 package People;
 
+import Logistics.Order;
+
 public class CateringCustomer extends defaultCustomer{
 
     public CateringCustomer(String name) {
@@ -13,8 +15,8 @@ public class CateringCustomer extends defaultCustomer{
     15 total
      */
     @Override
-    public boolean buyRolls() {
-        return false;
+    public Order makeOrder(Order currentOrder) {
+        return null;
     }
 
     /*
