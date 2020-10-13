@@ -48,7 +48,7 @@ public abstract class defaultCustomer implements Customer{
             case "pastry":
                 return new pastryRoll();
             case "sausage":
-                return new SausageRoll();
+                return new sausageRoll();
             case "jelly":
                 return new jellyRoll();
             case "spring":

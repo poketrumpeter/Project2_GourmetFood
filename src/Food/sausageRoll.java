@@ -1,8 +1,8 @@
 package Food;
 
-public class SausageRoll extends defaultRoll{
+public class sausageRoll extends defaultRoll{
 
-    public SausageRoll() {
+    public sausageRoll() {
         super("sausage roll");
     }
 
