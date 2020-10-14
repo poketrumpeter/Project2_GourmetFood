@@ -47,18 +47,14 @@ System.out.println("The Store Open test has succeeded.");
 System.out.println("The Day Number posttest has succeeded.");
     }
     @Test
-    public void testCasCustomer(GourmetFoodShop testStore) {
-	CasualCustomer casCust = new CasualCustomer(1);
-	Order testOrder = new Order();
-	casCust.orderItems(testOrder);
-
+    public void testStoreClose(GourmetFoodShop testStore) {
         try {
-            Assert.assertArrayEquals(result, expectedResult);
+            Assert.assertFalse(testStore.openForBusiness);
         } catch (AssertionError e) {    
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Store Closed test has failed!");
             throw e;
 }
-System.out.println("The Day Number pretest has succeeded.");
+System.out.println("The Store Closed test has succeeded.");
     }
     @Test
     public void testBusCustomer(GourmetFoodShop testStore) {
