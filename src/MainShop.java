@@ -93,8 +93,8 @@ public class MainShop {
                 // implement where if customer does not get their original order, we take a note of it
                 // implement where if stocks all drop to zero, continue to next day
             }
-		shop.close()
-		shop.removeObserver(announcer);
+	    shop.close();
+	    shop.removeObserver(announcer);
         }
 
 
