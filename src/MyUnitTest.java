@@ -85,18 +85,19 @@ System.out.println("The Day Number pretest has succeeded.");
 System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void testOrder(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testOrder() {
+	Order testOrder = new Order(17);
+        float result = testOrder.orderNumber;
 
-        int expectedResult = 1;
+        int expectedResult = 17;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {    
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Order Number test has failed!");
             throw e;
 }
-System.out.println("The Day Number pretest has succeeded.");
+System.out.println("The Order  Number test has succeeded.");
     }
     @Test
     public void testSpringRoll(GourmetFoodShop testStore) {

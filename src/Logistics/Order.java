@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Order {
 
-    float orderNumber;
+    public float orderNumber;
     private ArrayList<OrderItem> items;
     double orderTotal;
     boolean fulfilled;
