@@ -1,8 +1,10 @@
-package Food;
+package Food.Factories;
 
 // Factory implemented (no abstract as there are no families with differences in procedures yet)
 
-public class defaultRollFactory { //extends defaultRoll {
+import Food.*;
+
+public class DefaultRollFactory { //extends defaultRoll {
 
     // method to create new roll
     public Roll createRoll(String type) {

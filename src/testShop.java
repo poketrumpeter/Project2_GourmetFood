@@ -42,10 +42,10 @@ public class testShop {
         Artemis.orderItems(order3);
 
         order1.displayOrder();
-        //newStore.respondToOrder(order1);
+        newStore.respondToOrder(order1);
 
         order2.displayOrder();
-        //newStore.respondToOrder(order2);
+        newStore.respondToOrder(order2);
 
         //order3.displayOrder();
     }

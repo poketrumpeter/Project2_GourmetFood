@@ -1,9 +1,12 @@
 package Food;
 
+import Food.Factories.JellyExtrasFactory;
+
 public class jellyRoll extends defaultRoll{
 
     public jellyRoll() {
-        super("jel", "Roll stuffed full of Jelly", "jelly roll");
+        super("jel", "Roll stuffed full of Jelly", "jelly roll",
+                new JellyExtrasFactory());
     }
 
     @Override
