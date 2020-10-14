@@ -81,7 +81,12 @@ public class GourmetFoodShop implements Store{
 
         for(OrderItem item : newOrder.getItems()){
             //want to get stock of current roll type
-            stockAvailable = inventory.decrementInventory(item.roll.getKey(), item.quantity);
+
+            if(inventory.decrementInventory(item.roll.getKey(), item.quantity) == false) {
+                stockAvailable = false;
+            }
+            //The code below might will always return true if the last item is in stock, but if a previous item is out of stock
+            // stockAvailable = inventory.decrementInventory(item.roll.getKey(), item.quantity);
         }
         //if there was stock to complete the order, save order
         if (stockAvailable){
