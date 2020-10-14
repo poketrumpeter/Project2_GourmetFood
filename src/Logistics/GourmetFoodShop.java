@@ -1,7 +1,6 @@
 package Logistics;
 
 import Food.*;
-import People.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +19,7 @@ public class GourmetFoodShop implements Store{
     public GourmetFoodShop() {
         inventory = new Inventory(new HashMap<>());
         inventory.addInventory(new jellyRoll(), 30);
-        inventory.addInventory(new SausageRoll(), 30);
+        inventory.addInventory(new sausageRoll(), 30);
         inventory.addInventory(new eggRoll(), 30);
         inventory.addInventory(new pastryRoll(), 30);
         inventory.addInventory(new springRoll(), 30);

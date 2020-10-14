@@ -1,9 +1,6 @@
 package Food.Factories;
 
-import Food.Decorators.PastryFilling;
-import Food.Decorators.extraFilling;
-import Food.Decorators.extraSauce;
-import Food.Decorators.extraTopping;
+import Food.Decorators.*;
 import Food.Roll;
 
 public class PastryExtrasFactory extends ExtrasFactory{
@@ -15,11 +12,11 @@ public class PastryExtrasFactory extends ExtrasFactory{
 
     @Override
     public extraTopping addTopping(Roll roll) {
-        return null;
+        return new PastryTopping(roll);
     }
 
     @Override
     public extraSauce addSauce(Roll roll) {
-        return null;
+        return new PastrySauce(roll);
     }
 }

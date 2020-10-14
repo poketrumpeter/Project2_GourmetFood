@@ -17,6 +17,6 @@ public class EggExtrasFactory extends ExtrasFactory{
 
     @Override
     public extraSauce addSauce(Roll roll) {
-        return null;
+        return new EggSauce(roll);
     }
 }

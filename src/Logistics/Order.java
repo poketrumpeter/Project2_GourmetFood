@@ -77,9 +77,18 @@ public class Order {
             rollToWrap = newExtras.addFilling(rollToWrap);
         }
 
+        int sauce = rand.nextInt(4);
         //Wrapping roll with random choice for toppings
+        for(int i = 0; i < 3; i++){
+            rollToWrap = newExtras.addSauce(rollToWrap);
+        }
 
         //Wrapping roll with random choice for sauces
+        int toppings = rand.nextInt(3);
+        for (int i = 0; i < 2; i++){
+            rollToWrap = newExtras.addTopping(rollToWrap);
+        }
+
 
         return rollToWrap;
     }

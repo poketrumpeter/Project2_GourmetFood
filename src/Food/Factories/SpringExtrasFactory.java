@@ -1,9 +1,6 @@
 package Food.Factories;
 
-import Food.Decorators.SpringFilling;
-import Food.Decorators.extraFilling;
-import Food.Decorators.extraSauce;
-import Food.Decorators.extraTopping;
+import Food.Decorators.*;
 import Food.Roll;
 
 public class SpringExtrasFactory extends ExtrasFactory{
@@ -15,11 +12,11 @@ public class SpringExtrasFactory extends ExtrasFactory{
 
     @Override
     public extraTopping addTopping(Roll roll) {
-        return null;
+        return new SpringTopping(roll);
     }
 
     @Override
     public extraSauce addSauce(Roll roll) {
-        return null;
+        return new SpringSauce(roll);
     }
 }

@@ -7,7 +7,7 @@ public class JellySauce extends extraSauce{
     Roll roll;
     public JellySauce(Roll roll) {
         super(roll);
-        this.roll = roll
+        this.roll = roll;
     }
 
     @Override
