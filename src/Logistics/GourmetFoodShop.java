@@ -13,10 +13,10 @@ public class GourmetFoodShop implements Store, Subject {
     Inventory inventory;
     ArrayList<Order> dailyOrders;
     int dailyCustomers;
-    int dayNumber;
+    public int dayNumber;
     String day;
     int numOrders;
-    boolean openForBusiness;
+    public boolean openForBusiness;
 
     private ArrayList<Observer> observers;
 
