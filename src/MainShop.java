@@ -155,7 +155,7 @@ public class MainShop {
         }
         // at the end of 30 days
         System.out.println("Total Number of Rolls Sold:          " + totalRollsSold);
-        System.out.print("Total Revenue:                       ");
+        System.out.print("Total Revenue:                         ");
         System.out.printf("%.2f", totalRevenue);
         System.out.println();
         System.out.println("Total Number of Roll Outage Impacts: " + totalOutageImpact);
