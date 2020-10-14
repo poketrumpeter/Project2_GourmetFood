@@ -23,16 +23,17 @@ public class MainShop {
         // create instance of factory
         //defaultRollFactory rollFactory = new defaultRollFactory();
 
+	//Part of Obeserver Design Pattern implementation
+        Announcer announcer = new Announcer("Jackson the Announcer");
+
         //begin store program
         GourmetFoodShop shop = new GourmetFoodShop(); // instantiates 30 of each roll type on day 1
 
         // for loop for 30 days
         for(int i = 1; i <= 30; i++) {
+	    shop.registerObserver(announcer);//part of observer implementation
             // open shop and checks to restock
             shop.open(i);
-            System.out.println();
-            System.out.println("Day Number: " + i);
-            System.out.println();
 
 
             //customer vector with ID's given
@@ -92,6 +93,8 @@ public class MainShop {
                 // implement where if customer does not get their original order, we take a note of it
                 // implement where if stocks all drop to zero, continue to next day
             }
+		shop.close()
+		shop.removeObserver(announcer);
         }
 
 

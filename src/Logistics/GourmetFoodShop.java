@@ -9,7 +9,8 @@ import java.util.Map;
 
 //import sun.jvm.hotspot.oops.HeapPrinter;
 
-public class GourmetFoodShop implements Store{
+public class GourmetFoodShop implements Store, Subject{
+
   
     Inventory inventory;
     ArrayList<Order> dailyOrders;
@@ -18,6 +19,16 @@ public class GourmetFoodShop implements Store{
     String day;
     int numOrders;
     boolean openForBusiness;
+    int totalRevenue;
+    int springSales;
+    int eggSales;
+    int pastrySales;
+    int sausageSales;
+    int jellySales;
+    int rollSales;
+    int impactedOrders;
+    //Part of Observer Design Pattern implementation
+    private List<Observer> observer_list = new ArrayList<Observer>();
 
     public GourmetFoodShop() {
         inventory = new Inventory(new HashMap<>());
@@ -31,10 +42,46 @@ public class GourmetFoodShop implements Store{
         this.dayNumber = 1;
         this.dailyCustomers = 0;
         openForBusiness = true;
+        this.totalRevenue = 0;
+        this.springSales = 0;
+        this.eggSales = 0;
+        this.pastrySales = 0;
+        this.sausageSales = 0;
+        this.jellySales = 0;
+        this.rollSales = 0;
+        this.impactedOrders = 0;
     }
+    //Part of Observer Design Pattern implementation
+    public void registerObserver(Observer observer)
+    {
+        observer_list.add(observer);		
+    }
+
+    //Part of Observer Design Pattern implementation
+    public void removeObserver(Observer observer)
+    {
+        observer_list.remove(observer);		
+    }
+
+    //Part of Observer Design Pattern implementation
+    public void notifyObservers(String message)
+    {
+        for (Observer observer : observer_list) 
+        {
+           observer.update(message);
+        }
+     }
 
     @Override
     public void open(int day) {
+
+	//need to clear dailyOrders array
+
+	//Part of Observer Design Pattern implementation
+        String message = "Day Number "+ day.toString();
+        this.notifyObservers(message);
+
+
         this.dayNumber = day;
 
         //if the day isn't the first day, check to restock
@@ -48,14 +95,12 @@ public class GourmetFoodShop implements Store{
     }
 
 
-    //dont think we need this
     @Override
     public void close() {
+	//have to go through loop of daily orders and display various info at end of day
 
         //Close the shop and increment the day and replenish stock if it is out
-        dayNumber++;
-
-        //count through stock checking to see if any is out
+        dayNumber = dayNumber + 1;
     }
 
     @Override
@@ -84,7 +129,7 @@ public class GourmetFoodShop implements Store{
             this.dailyOrders.add(newOrder);
             return status;
         }
-        else{
+        else{//case that order wasnt filled?
             return status;
         }
     }
