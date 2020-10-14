@@ -1,53 +1,37 @@
 package Logistics;
 
-//import Food.Roll;
-import Food.Roll;
-import Food.defaultRollFactory;
+
+import Food.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 //import sun.jvm.hotspot.oops.HeapPrinter;
 
 public class GourmetFoodShop implements Store{
-
-    ArrayList<Order> dailyOrders;
-    //ArrayList<Roll> stock;
-    ArrayList<Roll> rollType = new ArrayList<>();
-    int[] rollStock = new int[5];
-    //Map<String, Integer> stock;
+  
+    Inventory inventory;
+    int dailyCustomers;
     int dayNumber;
-    //String day;
+    String day;
+    int numOrders;
     boolean openForBusiness;
 
-
     public GourmetFoodShop() {
-        //this.stock = new HashMap<>();
-        //this.stock.put(new jellyRoll().getType(), 30);
-        //this.stock.put(new pastryRoll().getType(), 30);
-        //this.stock.put(new eggRoll().getType(), 30);
-        //this.stock.put(new springRoll().getType(), 30);
-        //this.stock.put(new sausageRoll().getType(), 30);
-        //this.dayNumber = 1;
-        //this.day = "01";
+        inventory = new Inventory(new HashMap<>());
+        inventory.addInventory(new jellyRoll(), 30);
+        inventory.addInventory(new sausageRoll(), 30);
+        inventory.addInventory(new eggRoll(), 30);
+        inventory.addInventory(new pastryRoll(), 30);
+        inventory.addInventory(new springRoll(), 30);
 
-        defaultRollFactory rollFactory = new defaultRollFactory();
 
-        rollType.add(rollFactory.createRoll("jelly"));
-        rollType.add(rollFactory.createRoll("pastry"));
-        rollType.add(rollFactory.createRoll("egg"));
-        rollType.add(rollFactory.createRoll("spring"));
-        rollType.add(rollFactory.createRoll("sausage"));
-
-        rollStock[0] = 30;
-        rollStock[1] = 30;
-        rollStock[2] = 30;
-        rollStock[3] = 30;
-        rollStock[4] = 30;
-
+        this.customerOrders = new HashMap<>();
+        this.dailyOrders = new ArrayList<>();
+        this.dayNumber = 1;
+        this.dailyCustomers = 0;
         openForBusiness = true;
-        //this.rollType = {"jelly", "pastry", "egg", "spring", "sausage"};
-        //this.rollStock = {30, 30, 30, 30, 30};
-        //this.dayNumber = 1;
     }
 
     @Override
@@ -65,13 +49,18 @@ public class GourmetFoodShop implements Store{
                 }
             }
         }
+
     }
 
 
     //dont think we need this
     @Override
     public void close() {
-        openForBusiness = false;
+
+        //Close the shop and increment the day and replenish stock if it is out
+        dayNumber++;
+
+        //count through stock checking to see if any is out
     }
 
     @Override
@@ -107,11 +96,31 @@ public class GourmetFoodShop implements Store{
 
     }
 
-    public void displayStock(){
-        //for(Map.Entry<String, Integer> entry: this.stock.entrySet()){
-        for(int i = 0; i < 5; i++) {
-            System.out.println("Stock for " + rollType.get(i).getType() + ": " + rollStock[i]);
-            //System.out.println("Stock for " + entry.getKey() + ": " + entry.getValue());
+
+        /*
+        method to check stock to make sure we could fulfill the order, If true, respond to Customer
+        to let them buy the rolls and so we can record the order
+
+        If false, allow them to use their respond to roll outage function.
+         */
+
+        boolean stockAvailable = true;
+
+        for(OrderItem item : newOrder.getItems()){
+            //want to get stock of current roll type
+            stockAvailable = inventory.decrementInventory(item.roll.getKey(), item.quantity);
         }
+        //if there was stock to complete the order, save order
+        if (stockAvailable){
+            this.dailyOrders.add(newOrder);
+        }
+
+        System.out.println();
+        displayStock();
+    }
+
+    public void displayStock(){
+        inventory.displayInventory();
+
     }
 }

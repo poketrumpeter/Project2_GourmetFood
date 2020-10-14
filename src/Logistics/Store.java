@@ -1,5 +1,7 @@
 package Logistics;
 
+import Food.Extras;
+
 public interface Store {
 
     void open(int day); //Specific Method to open the store
@@ -8,5 +10,7 @@ public interface Store {
 
     //Function to make rolls based on an order
     void respondToOrder(Order newOrder);
+
+    //void addItem(String customerId, String typeOfRoll, int quantity, Extras extras);
 
 }

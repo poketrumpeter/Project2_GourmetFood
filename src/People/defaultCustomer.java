@@ -7,8 +7,8 @@ import java.util.Random;
 public abstract class defaultCustomer implements Customer{
 
     String name;
-
     String type;
+    int id;
 
     public defaultCustomer(String type, String name) {
 
@@ -20,7 +20,7 @@ public abstract class defaultCustomer implements Customer{
 
     }
 
-    Roll orderRoll(){
+    String orderRoll(){
         //Randomly pick a Roll to add to an order
         Random rand = new Random();
 
@@ -29,19 +29,20 @@ public abstract class defaultCustomer implements Customer{
         switch (rollChoice){
 
             case 0:
-                return orderRoll("pastry");
+                return "pastry";
             case 1:
-                return orderRoll("sausage");
+                return "sausage";
             case 2:
-                return orderRoll("jelly");
+                return "jelly";
             case 3:
-                return orderRoll("spring");
+                return "spring";
             case 4:
-                return orderRoll("egg");
+                return "egg";
 
         }
         return null;
     }
+
     Roll orderRoll(String type){
 
         switch (type){
