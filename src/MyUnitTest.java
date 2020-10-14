@@ -9,95 +9,139 @@ import Food.Roll;
 public class MyUnitTest {
 
     @Test
-    public void testDayNumber() {
-        GourmetFoodShop testStore = new GourmetFoodShop();
-	
-
+    public void pretestDayNumber(GourmetFoodShop testStore) {        
 	int result = testStore.dayNumber;
 
 	int expectedResult = 1;
-
-        assertEquals(result, expectedResult);
+	
+	try {
+    	    Assert.assertEquals(result, expectedResult);
+	} catch (AssertionError e) {
+	    System.out.println("The Day Number pretest has failed!");
+	    throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");	
     }
     @Test
-    public void test2() {
-        //MyUnit myUnit = new MyUnit();
-
-        //String result = myUnit.concatenate("one", "two");
-
-        //assertEquals("onetwo", result);
-
+    public void testStoreOpen(GourmetFoodShop testStore) {
+        try {
+            Assert.assertTrue(testStore.openForBusiness);
+        } catch (AssertionError e) {
+            System.out.println("The Store Open test has failed!");
+            throw e;
+}
+System.out.println("The Store Open test has succeeded.");
     }
     @Test
-    public void test3() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber3(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test4() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber4(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test5() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber5(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test6() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber6(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test7() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber7(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test8() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber8(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test9() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber9(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
     @Test
-    public void test10() {
-        //MyUnit myUnit = new MyUnit();
+    public void pretestDayNumber10(GourmetFoodShop testStore) {
+        int result = testStore.dayNumber;
 
-        //String result = myUnit.concatenate("one", "two");
+        int expectedResult = 1;
 
-        //assertEquals("onetwo", result);
-
+        try {
+            Assert.assertEquals(result, expectedResult);
+        } catch (AssertionError e) {    
+            System.out.println("The Day Number pretest has failed!");
+            throw e;
+}
+System.out.println("The Day Number pretest has succeeded.");
     }
 }

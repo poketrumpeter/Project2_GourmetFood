@@ -19,7 +19,7 @@ public class GourmetFoodShop implements Store, Subject{
     public int dayNumber;
     String day;
     int numOrders;
-    boolean openForBusiness;
+    public boolean openForBusiness;
     int totalRevenue;
     int springSales;
     int eggSales;
