@@ -2,6 +2,7 @@ import Food.*;
 
 import Logistics.GourmetFoodShop;
 import Logistics.Order;
+import Logistics.StockStatus;
 import Logistics.Store;
 import People.BuisnessCustomer;
 import People.CasualCustomer;
@@ -43,13 +44,19 @@ public class testShop {
         Chloe.orderItems(order2);
         Artemis.orderItems(order3);
 
-        order1.displayOrder();
+//        order1.displayOrder();
+//        newStore.respondToOrder(order1);
+//
+//        tim.rollOutage(order1, null);
+//        order1.displayOrder();
+//
+//        order2.displayOrder();
+//        newStore.respondToOrder(order2);
+//
+        order3.displayOrder();
+        newStore.respondToOrder(order3);
 
-        newStore.respondToOrder(order1);
-
-        order2.displayOrder();
-        newStore.respondToOrder(order2);
-
-        //order3.displayOrder();
+        Artemis.rollOutage(order3, new StockStatus(true, 11));
+        order3.displayOrder();
     }
 }

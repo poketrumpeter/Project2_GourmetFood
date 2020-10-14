@@ -1,11 +1,5 @@
 package Food;
 
-
-public class sausageRoll extends defaultRoll{
-
-    public sausageRoll() {
-        super("sausage roll");
-
 import Food.Factories.SausageExtrasFactory;
 
 public class sausageRoll extends defaultRoll{

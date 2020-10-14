@@ -2,6 +2,7 @@ package Logistics;
 
 import Food.Roll;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Inventory {
@@ -31,9 +32,21 @@ public class Inventory {
         return inventory.get(rollKey).getQty();
     }
 
-    public boolean decrementInventory(String rollKey, int qtyOrdered) {
+    public void checkEmpty(){
+        for (Map.Entry<String, InventoryItem> item: inventory.entrySet()){
+
+            //check if any qty is 0
+            if(item.getValue().getQty() == 0){
+                restockItem(item.getKey());
+            }
+        }
+    }
+
+    public StockStatus decrementInventory(String rollKey, int qtyOrdered) {
 
         InventoryItem item = inventory.get(rollKey);
+
+        StockStatus status = new StockStatus(true, 0);
 
         if (item != null) {
             int qty = item.getQty();
@@ -41,16 +54,22 @@ public class Inventory {
             if (qtyOrdered <= qty) { //We have enough and wont edn with 0
                 if (qtyOrdered == qty) { //We will end with 0 stock
                     //Will need to order more stock
-                    System.out.println("Out of Stock");
+                    //check to see if all stock is out
+
                 }
                 item.setQty(qty - qtyOrdered);
 
-                return true;
-            } else {//We dont have stock
-                return false;
+                status.setIndex(status.getIndex() + 1);
+
+                return status;
+            }
+            else {//We dont have stock
+                status.setStockAvailible(false);
+
+                return status;
             }
         }
-        return false;
+        return status;
     }
 
     public void restockItem(String rollKey){

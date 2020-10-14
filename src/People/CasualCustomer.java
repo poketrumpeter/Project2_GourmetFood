@@ -3,6 +3,7 @@ package People;
 import Food.Roll;
 import Logistics.Order;
 import Logistics.OrderItem;
+import Logistics.StockStatus;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -34,7 +35,20 @@ public class CasualCustomer extends defaultCustomer{
     }
 
     @Override
-    public void rollOutage() {
+    public void rollOutage(Order currentOrder, StockStatus status) {
+        //in response to a roll outage from their original order, we will select a different roll type
 
+        //order Random roll, if it is the same roll, we should just end back here to make another random call
+        Random rand = new Random();
+
+        int amountToBuy = rand.nextInt(3);
+        String rollChoice = orderRoll();
+
+        //clear current order
+        currentOrder.getItems().clear();
+        currentOrder.setOrderTotal(0);
+
+        //make new order
+        currentOrder.addItems(rollChoice, amountToBuy+1);
     }
 }

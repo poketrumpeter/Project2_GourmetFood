@@ -41,12 +41,12 @@ public class MainShop {
                 customers.add(1);
             }
             // business (ID: 2)
-            int businessRand = (int)(Math.random() * 3 + 1); // 1-12 random casual
+            int businessRand = (int)(Math.random() * 3 + 1); // 1-3 random Buisness
             for(int j = 0; j < businessRand; j++) {
                 customers.add(2);
             }
             // catering (ID: 3)
-            int caterRand = (int)(Math.random() * 3 + 1); // 1-12 random casual
+            int caterRand = (int)(Math.random() * 3 + 1); // 1-12 random Catering
             for(int j = 0; j < caterRand; j++) {
                 customers.add(3);
             }
@@ -67,7 +67,7 @@ public class MainShop {
                 if(customers.get(j) == 1) { // casual
                     Order order1 = new Order(j);
                     Customer casual = new CasualCustomer(Integer.toString(i));
-                    order1 = casual.makeOrder(order1);
+                    casual.orderItems(order1);
                 }
             }
         }

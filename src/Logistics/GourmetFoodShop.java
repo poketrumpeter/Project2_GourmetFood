@@ -12,6 +12,7 @@ import java.util.Map;
 public class GourmetFoodShop implements Store{
   
     Inventory inventory;
+    ArrayList<Order> dailyOrders;
     int dailyCustomers;
     int dayNumber;
     String day;
@@ -26,8 +27,6 @@ public class GourmetFoodShop implements Store{
         inventory.addInventory(new pastryRoll(), 30);
         inventory.addInventory(new springRoll(), 30);
 
-
-        this.customerOrders = new HashMap<>();
         this.dailyOrders = new ArrayList<>();
         this.dayNumber = 1;
         this.dailyCustomers = 0;
@@ -40,14 +39,10 @@ public class GourmetFoodShop implements Store{
 
         //if the day isn't the first day, check to restock
         if(day != 1) {
-            //loop through stocks
-            for(int i = 0; i < 5; i++) {
-                //if that roll type is out of stock
-                if(rollStock[i] == 0) {
-                    //restock
-                    rollStock[i] = 30;
-                }
-            }
+
+            //Inventory method for checking each Items stock making sure if its 0, restock it
+            inventory.checkEmpty();
+
         }
 
     }
@@ -64,38 +59,7 @@ public class GourmetFoodShop implements Store{
     }
 
     @Override
-    public void respondToOrder(Order newOrder) {
-        /*
-        method to check stock to make sure we could fulfill the order, If true, respond to Customer
-        to let them buy the rolls and so we can record the order
-        If false, allow them to use their respond to roll outage function.
-         */
-
-
-        //boolean stockAvailable = false;
-        for(Roll currentRoll: newOrder.getRolls()){
-            //index of rollType to rollStock
-            int index = -1;
-            for(int i = 0; i < rollType.size(); i++) {
-                if(rollType.get(i).getType().equals(currentRoll.getType())) {
-                    index = i;
-                }
-            }
-            //want to get stock of current roll type
-            //if(this.rollStock.get(currentRoll.getType()) != 0){
-            if(this.rollStock[index] != 0){
-                //Roll is in stock
-                System.out.println("In Stock");
-                // daily Order being updated
-                //dailyOrders.add();
-                //this.rollStock.computeIfPresent(currentRoll.getType(), (k, v) -> v-1);
-            }
-        }
-        System.out.println();
-        displayStock();
-
-    }
-
+    public StockStatus respondToOrder(Order newOrder) {
 
         /*
         method to check stock to make sure we could fulfill the order, If true, respond to Customer
@@ -106,17 +70,23 @@ public class GourmetFoodShop implements Store{
 
         boolean stockAvailable = true;
 
+        StockStatus status = new StockStatus(true, 0);
+
         for(OrderItem item : newOrder.getItems()){
             //want to get stock of current roll type
-            stockAvailable = inventory.decrementInventory(item.roll.getKey(), item.quantity);
+            status = inventory.decrementInventory(item.roll.getKey(), item.quantity);
         }
         //if there was stock to complete the order, save order
-        if (stockAvailable){
-            this.dailyOrders.add(newOrder);
-        }
-
         System.out.println();
         displayStock();
+
+        if (status.getStockAvailible()){
+            this.dailyOrders.add(newOrder);
+            return status;
+        }
+        else{
+            return status;
+        }
     }
 
     public void displayStock(){

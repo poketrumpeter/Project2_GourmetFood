@@ -26,6 +26,10 @@ public class Order {
         return items;
     }
 
+    public void setItems(ArrayList<OrderItem> items) {
+        this.items = items;
+    }
+
     //Form an order and add toppings based on RollKey and quantity of rolls
     public void addItems(String rollKey, int quantity) {
 
@@ -44,6 +48,14 @@ public class Order {
         }
 
         //this.items.add(new OrderItem(roll, quantity));
+    }
+
+    public double getOrderTotal() {
+        return orderTotal;
+    }
+
+    public String getItemType(int index){
+        return items.get(index).roll.getKey();
     }
 
     public void setOrderTotal(double orderTotal) {
@@ -91,5 +103,9 @@ public class Order {
 
 
         return rollToWrap;
+    }
+
+    public double currentCost(int index){
+        return items.get(index).roll.cost();
     }
 }

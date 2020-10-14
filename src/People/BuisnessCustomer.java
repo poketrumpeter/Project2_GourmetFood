@@ -2,6 +2,7 @@ package People;
 
 import Food.Roll;
 import Logistics.Order;
+import Logistics.StockStatus;
 import Logistics.Store;
 
 import java.util.ArrayList;
@@ -32,8 +33,13 @@ public class BuisnessCustomer extends defaultCustomer{
     //Method to respond to Roll Outages
     //Will be called in BuyRolls
 
+    //Information on how to clear an Array list from
+    // https://beginnersbook.com/2013/12/how-to-empty-an-arraylist-in-java/#:~:text=There%20are%20two%20ways%20to,the%20List%20is%20quite%20different.
     @Override
-    public void rollOutage() {
-
+    public void rollOutage(Order currentOrder, StockStatus status) {
+        System.out.println("Clearing Order");
+        //If original order cant be fulfilled, order will be cancelled
+        currentOrder.getItems().clear();
+        currentOrder.setOrderTotal(0);
     }
 }
