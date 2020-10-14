@@ -33,6 +33,10 @@ public class GourmetFoodShop implements Store{
         openForBusiness = true;
     }
 
+    public boolean isOpenForBusiness() {
+        return openForBusiness;
+    }
+
     @Override
     public void open(int day) {
         this.dayNumber = day;
@@ -54,7 +58,7 @@ public class GourmetFoodShop implements Store{
 
         //Close the shop and increment the day and replenish stock if it is out
         dayNumber++;
-
+        this.openForBusiness = false;
         //count through stock checking to see if any is out
     }
 
@@ -81,10 +85,18 @@ public class GourmetFoodShop implements Store{
         displayStock();
 
         if (status.getStockAvailible()){
+            newOrder.setFulfilled(true);
             this.dailyOrders.add(newOrder);
             return status;
         }
         else{
+
+            newOrder.setFulfilled(false);
+            //check to see if everything is out
+            if (inventory.checkAllEmpty()){
+                newOrder.setFulfilled(true);
+                this.close();
+            }
             return status;
         }
     }

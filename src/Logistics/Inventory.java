@@ -78,5 +78,22 @@ public class Inventory {
 
     }
 
+    boolean checkAllEmpty(){
+        int numOut = 0;
+        for (Map.Entry<String, InventoryItem> item: inventory.entrySet()){
+
+            //count through each key value
+            if(item.getValue().getQty() == 0){
+                numOut++;
+
+            }
+
+        }
+        if (numOut == 5){
+            return true;
+        }
+        return false;
+    }
+
 
 }

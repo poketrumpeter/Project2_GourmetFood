@@ -1,5 +1,6 @@
 import Logistics.GourmetFoodShop;
 import Logistics.Order;
+import Logistics.StockStatus;
 import People.BuisnessCustomer;
 import People.CasualCustomer;
 import People.CateringCustomer;
@@ -31,7 +32,7 @@ public class MainShop {
             // open shop and checks to restock
             shop.open(i);
             System.out.println();
-            System.out.println("Day Number: " + i);
+            System.out.println("++++++++++ Day Number: " + i + " +++++++++");
             System.out.println();
 
 
@@ -69,28 +70,40 @@ public class MainShop {
                 // new Order object given to store from each customer
                 System.out.println("Order Number: " + j);
 
-                if(customers.get(j) == 1) { // casual
-                    Order order1 = new Order(j);
-                    Customer casual = new CasualCustomer(Integer.toString(i));
-                    casual.orderItems(order1); // order1 should get overwritten
-                    shop.respondToOrder(order1);
+                StockStatus status = new StockStatus(true, 0);
+
+                Customer currentCustomer = new CasualCustomer("");
+
+                if(customers.get(j) == 1) { //  create a casual customer
+
+                    currentCustomer = new CasualCustomer(Integer.toString(i));
                 }
 
-                if(customers.get(j) == 2) { // business
-                    Order order1 = new Order(j);
-                    Customer business = new BuisnessCustomer(Integer.toString(i));
-                    business.orderItems(order1); // order1 should get overwritten
-                    shop.respondToOrder(order1);
+                if(customers.get(j) == 2) { // create a business customer
+                    currentCustomer = new BuisnessCustomer(Integer.toString(i));
+
                 }
 
                 if(customers.get(j) == 3) { // catering
-                    Order order1 = new Order(j);
-                    Customer cater = new CateringCustomer(Integer.toString(i));
-                    cater.orderItems(order1); // order1 should get overwritten
-                    shop.respondToOrder(order1);
+                    currentCustomer = new CateringCustomer(Integer.toString(i));
                 }
                 // implement where if customer does not get their original order, we take a note of it
                 // implement where if stocks all drop to zero, continue to next day
+
+                System.out.print("A new " + currentCustomer.getType() + " customer arrives at the Shop");
+                Order order1 = new Order(j);
+                currentCustomer.orderItems(order1); // order1 should get overwritten
+                //While loop for when order is not filfilled
+
+                while (!order1.isFulfilled()){
+                    status = shop.respondToOrder(order1);
+
+                    if(!status.getStockAvailible()){
+                        //need to roll outage
+                        currentCustomer.rollOutage(order1, status);
+                    }
+
+                }
             }
         }
 

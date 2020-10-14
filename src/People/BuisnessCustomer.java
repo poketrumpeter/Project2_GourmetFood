@@ -41,5 +41,7 @@ public class BuisnessCustomer extends defaultCustomer{
         //If original order cant be fulfilled, order will be cancelled
         currentOrder.getItems().clear();
         currentOrder.setOrderTotal(0);
+
+        currentOrder.setFulfilled(true);
     }
 }

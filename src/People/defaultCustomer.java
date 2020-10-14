@@ -8,11 +8,16 @@ public abstract class defaultCustomer implements Customer{
 
     String name;
     String type;
-    int id;
+    String id;
 
-    public defaultCustomer(String type, String name) {
+    public defaultCustomer(String type, String id) {
 
-        this.name = name;
+        this.type = type;
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
     }
 
     @Override

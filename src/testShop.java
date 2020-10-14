@@ -44,14 +44,14 @@ public class testShop {
         Chloe.orderItems(order2);
         Artemis.orderItems(order3);
 
-//        order1.displayOrder();
-//        newStore.respondToOrder(order1);
-//
-//        tim.rollOutage(order1, null);
-//        order1.displayOrder();
-//
-//        order2.displayOrder();
-//        newStore.respondToOrder(order2);
+        order1.displayOrder();
+        newStore.respondToOrder(order1);
+
+        tim.rollOutage(order1, null);
+        order1.displayOrder();
+
+        order2.displayOrder();
+        newStore.respondToOrder(order2);
 //
         order3.displayOrder();
         newStore.respondToOrder(order3);

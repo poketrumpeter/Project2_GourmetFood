@@ -29,6 +29,14 @@ public class Order {
         this.items = items;
     }
 
+    public boolean isFulfilled() {
+        return fulfilled;
+    }
+
+    public void setFulfilled(boolean fulfilled) {
+        this.fulfilled = fulfilled;
+    }
+
     //Form an order and add toppings based on RollKey and quantity of rolls
     public void addItems(String rollKey, int quantity) {
 
