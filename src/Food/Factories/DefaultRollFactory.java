@@ -18,7 +18,7 @@ public class DefaultRollFactory { //extends defaultRoll {
             return new pastryRoll();
         }
         if(type.equals("sausage")) {
-            return new SausageRoll();
+            return new sausageRoll();
         }
         if(type.equals("jelly")) {
             return new jellyRoll();
