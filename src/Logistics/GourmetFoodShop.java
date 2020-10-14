@@ -12,10 +12,15 @@ public class GourmetFoodShop implements Store{
     Map<String, Order> customerOrders;
     ArrayList<Order> dailyOrders;
     Inventory inventory;
-    int dailyCustomers;
     int dayNumber;
-    String day;
-    int numOrders;
+    int totalRevenue;
+    int springSales;
+    int eggSales;
+    int pastrySales;
+    int sausageSales;
+    int jellySales;
+    int rollSales;
+    int impactedOrders;
 
     public GourmetFoodShop() {
         inventory = new Inventory(new HashMap<>());
@@ -29,21 +34,35 @@ public class GourmetFoodShop implements Store{
         this.customerOrders = new HashMap<>();
         this.dailyOrders = new ArrayList<>();
         this.dayNumber = 1;
-        this.dailyCustomers = 0;
     }
 
     @Override
     public void open() {
+	//clear dailyOrder array to reset it for the day
+	
+	//part of observer, print out day number
 
-
+	//part of observer, print out starting roll stock
+	
     }
 
     @Override
     public void close() {
-        //Close the shop and increment the day and replenish stock if it is out
+        //Close the shop and increment the day
         dayNumber++;
 
-        //count through stock checking to see if any is out
+	//for observer, loop through daily orders to print info
+
+	//part of observer, print out roll inventory
+
+	//part of observer, print out total payment by customer type
+
+	//part of observer, print out number of orders affected by an outage ny customer type
+
+
+
+	//*print inventory orders by rolls type
+
     }
 
     @Override
@@ -66,6 +85,8 @@ public class GourmetFoodShop implements Store{
         if (stockAvailable){
             this.dailyOrders.add(newOrder);
         }
+
+	//print out order details
 
         System.out.println();
         displayStock();
