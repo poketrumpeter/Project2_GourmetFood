@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 //import sun.jvm.hotspot.oops.HeapPrinter;
 
-public class GourmetFoodShop implements Store{
+public class GourmetFoodShop implements Store, Subject {
   
     Inventory inventory;
     ArrayList<Order> dailyOrders;
@@ -17,6 +17,8 @@ public class GourmetFoodShop implements Store{
     String day;
     int numOrders;
     boolean openForBusiness;
+
+    private ArrayList<Observer> observers;
 
     public GourmetFoodShop() {
         inventory = new Inventory(new HashMap<>());
@@ -30,6 +32,32 @@ public class GourmetFoodShop implements Store{
         this.dayNumber = 1;
         this.dailyCustomers = 0;
         openForBusiness = true;
+
+        this.observers = new ArrayList<Observer>();
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o);
+        //Check to make sure we have a valid index
+        if(i >= 0){
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notifyObservers(String message) {
+
+        //This will count through all the observers and notify them by calling update
+        for(Observer observer : observers){
+            observer.update(this, message);
+        }
+
     }
 
     public boolean isOpenForBusiness() {
@@ -38,6 +66,7 @@ public class GourmetFoodShop implements Store{
 
     @Override
     public void open(int day) {
+        notifyObservers("open");
         this.dayNumber = day;
         this.openForBusiness = true;
 
@@ -58,6 +87,7 @@ public class GourmetFoodShop implements Store{
 
         //Close the shop and increment the day and replenish stock if it is out
         //dayNumber++;
+        notifyObservers("closed");
         this.openForBusiness = false;
         //count through stock checking to see if any is out
     }
@@ -71,6 +101,8 @@ public class GourmetFoodShop implements Store{
 
         If false, allow them to use their respond to roll outage function.
          */
+
+        notifyObservers("responding to order");
 
         boolean stockAvailable = true;
 
@@ -130,6 +162,7 @@ public class GourmetFoodShop implements Store{
     }
 
     public void displayStock(){
+        notifyObservers("displaying the current stock");
         System.out.println("Inventory Count: ");
         inventory.displayInventory();
 

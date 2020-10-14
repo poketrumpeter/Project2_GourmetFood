@@ -27,4 +27,17 @@ public class InventoryItem {
     public void setQty(int qty) {
         this.qty = qty;
     }
+
+    //Part of Obeserver Design Pattern implementation
+    /*
+    public static class Announcer implements Observer
+    {
+
+        //@Override
+        public void update(String message)
+        {
+            System.out.println("Announcement: " + message);
+        }
+    }
+    */
 }

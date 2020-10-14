@@ -1,3 +1,4 @@
+import Logistics.Announcer;
 import Logistics.GourmetFoodShop;
 import Logistics.Order;
 import Logistics.StockStatus;
@@ -37,9 +38,12 @@ public class MainShop {
         int totalOutageImpact = 0;
         int totalRollsSold = 0;
 
+        Announcer announcer = new Announcer();
+
         // for loop for 30 days
         for(int i = 1; i <= 30; i++) {
             // open shop and checks to restock
+            shop.addObserver(announcer);
             shop.open(i);
             System.out.println();
             System.out.println("++++++++++ Day Number: " + i + " +++++++++");
@@ -152,6 +156,7 @@ public class MainShop {
             System.out.println("Catering: " + customerRollOutages.get("catering"));
 
             System.out.println("------------------");
+            shop.removeObserver(announcer);
         }
         // at the end of 30 days
         System.out.println("Total Number of Rolls Sold:          " + totalRollsSold);
