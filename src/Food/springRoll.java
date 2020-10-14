@@ -3,7 +3,7 @@ package Food;
 public class springRoll extends defaultRoll{
 
     public springRoll() {
-        super("spring roll");
+        super("spr", "spring roll, a special for Spring time", "spring roll");
     }
 
     @Override

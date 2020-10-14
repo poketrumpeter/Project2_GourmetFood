@@ -1,9 +1,6 @@
 package Food;
 
-public abstract class rollDecorator extends defaultRoll{
+public abstract class rollDecorator implements Roll{
 
-    public rollDecorator(String type) {
-        super(type);
-    }
 
 }

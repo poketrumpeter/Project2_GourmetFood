@@ -3,7 +3,7 @@ package Food;
 public class SausageRoll extends defaultRoll{
 
     public SausageRoll() {
-        super("sausage roll");
+        super("sau", "Roll wrapped around a plump sausage", "sausage roll");
     }
 
     @Override

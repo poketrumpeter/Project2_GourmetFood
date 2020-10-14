@@ -3,7 +3,7 @@ package Food;
 public class jellyRoll extends defaultRoll{
 
     public jellyRoll() {
-        super("jelly roll");
+        super("jel", "Roll stuffed full of Jelly", "jelly roll");
     }
 
     @Override

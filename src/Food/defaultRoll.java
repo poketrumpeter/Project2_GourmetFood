@@ -2,39 +2,28 @@ package Food;
 
 public abstract class defaultRoll implements Roll{
 
-    int stock;
-    String type;
+    String key;
+    String name;
+    String description;
 
-    public defaultRoll(String type) {
-        this.stock = 30;
-        this.type = type;
+    public defaultRoll(String key, String description, String name) {
+
+        this.name = name;
+        this.key = key;
+        this.description = description;
     }
 
     @Override
-    public int getStock() {
-        return stock;
+    public String getName() {
+        return name;
     }
 
     @Override
-    public String getType() {
-        return type;
+    public String getKey() {
+        return key;
     }
 
-    //When a roll is ordered, need a function to make a role and have it sold
-    //Function to call when making and selling rolls -- Returns the Cost for the specific Roll Order
-    int makeSell(int amount){
-        return 0;
-    }
 
-    //Function to call to add extras, Will be the same for all Rolls
-    public void addExtras(){
-
-    }
-
-    //FUnction to order more inventory for restock
-    void newInventory(){
-
-    }
 
 
 

@@ -1,12 +1,21 @@
 package Food;
 
-public class extraSauce extends rollDecorator{
+public class extraSauce implements Roll{
 
     Roll roll;
 
     public extraSauce(Roll roll) {
-        super(roll.getType() + ", extra Sauce");
         this.roll = roll;
+    }
+
+    @Override
+    public String getName() {
+        return roll.getName() + ", extra sauce";
+    }
+
+    @Override
+    public String getKey() {
+        return roll.getKey();
     }
 
     @Override
