@@ -89,7 +89,7 @@ System.out.println("The Day Number pretest has succeeded.");
 	Order testOrder = new Order(17);
         float result = testOrder.orderNumber;
 
-        int expectedResult = 17;
+        float expectedResult = 17;
 
         try {
             Assert.assertEquals(result, expectedResult);
