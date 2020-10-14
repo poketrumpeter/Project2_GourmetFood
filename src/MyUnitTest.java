@@ -1,8 +1,8 @@
 package org.junit;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import Logistics.GourmetFoodShop;
-import Food.Roll;
+import Logistics.*;
+import Food.*;
 
 
 
@@ -47,101 +47,109 @@ public class MyUnitTest {
         System.out.println("The Day Number posttest has succeeded.");
     }
     @Test
-    public void testCasCustomer(GourmetFoodShop testStore) {
-        CasualCustomer casCust = new CasualCustomer(1);
-        Order testOrder = new Order();
-        casCust.orderItems(testOrder);
-
+    public void testStoreClose(GourmetFoodShop testStore) {
         try {
-            Assert.assertArrayEquals(result, expectedResult);
+            Assert.assertFalse(testStore.openForBusiness);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Store Closed test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Store Closed test has succeeded.");
     }
     @Test
-    public void testBusCustomer(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testSpringRoll() {
+        springRoll testSpring = new springRoll();
 
-        int expectedResult = 1;
+        double result = testSpring.cost();
+
+        double expectedResult = 1.99;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Spring Roll test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Spring Roll test has succeeded.");
     }
     @Test
-    public void testCatCustomer(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testPastryRoll() {
+        pastryRoll testPastry = new pastryRoll();
 
-        int expectedResult = 1;
+        double result = testPastry.cost();
+
+        double expectedResult = 3.29;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Pastry Roll test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Pastry Roll test has succeeded.");
     }
     @Test
-    public void testOrder(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testSausageRoll() {
+        sausageRoll testSausage = new sausageRoll();
 
-        int expectedResult = 1;
+        double result = testSausage.cost();
+
+        double expectedResult = 3.99;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Sausage Roll test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Sauage Roll test has succeeded.");
     }
     @Test
-    public void testSpringRoll(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testJellyRoll() {
+        jellyRoll testJelly = new jellyRoll();
 
-        int expectedResult = 1;
+        double result = testJelly.cost();
+
+        double expectedResult = 2.69;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Jelly Roll test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Jelly Roll test has succeeded.");
     }
-    @Test
-    public void testSausageToppings(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
 
-        int expectedResult = 1;
+    @Test
+    public void testEggRoll() {
+        eggRoll testEgg = new eggRoll();
+
+        double result = testEgg.cost();
+
+        double expectedResult = 2.99;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Egg Roll test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Egg Roll test has succeeded.");
     }
     @Test
-    public void testInventory(GourmetFoodShop testStore) {
-        int result = testStore.dayNumber;
+    public void testOrder() {
+        Order testOrder = new Order(17);
+        float result = testOrder.orderNumber;
 
-        int expectedResult = 1;
+        float expectedResult = 17;
 
         try {
             Assert.assertEquals(result, expectedResult);
         } catch (AssertionError e) {
-            System.out.println("The Day Number pretest has failed!");
+            System.out.println("The Order Number test has failed!");
             throw e;
         }
-        System.out.println("The Day Number pretest has succeeded.");
+        System.out.println("The Order  Number test has succeeded.");
     }
 }
