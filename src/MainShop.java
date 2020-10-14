@@ -1,6 +1,8 @@
 import Logistics.GourmetFoodShop;
 import Logistics.Order;
+import People.BuisnessCustomer;
 import People.CasualCustomer;
+import People.CateringCustomer;
 import People.Customer;
 
 import java.util.Collections;
@@ -28,7 +30,9 @@ public class MainShop {
         for(int i = 1; i <= 30; i++) {
             // open shop and checks to restock
             shop.open(i);
+            System.out.println();
             System.out.println("Day Number: " + i);
+            System.out.println();
 
 
             //customer vector with ID's given
@@ -41,34 +45,52 @@ public class MainShop {
                 customers.add(1);
             }
             // business (ID: 2)
-            int businessRand = (int)(Math.random() * 3 + 1); // 1-3 random Buisness
+            int businessRand = (int)(Math.random() * 3 + 1); // 1-12 random casual
             for(int j = 0; j < businessRand; j++) {
                 customers.add(2);
             }
             // catering (ID: 3)
-            int caterRand = (int)(Math.random() * 3 + 1); // 1-12 random Catering
+            int caterRand = (int)(Math.random() * 3 + 1); // 1-12 random casual
             for(int j = 0; j < caterRand; j++) {
                 customers.add(3);
             }
 
-            System.out.println("customers pre shuffle: ");
-            System.out.println(customers);
+            //System.out.println("customers pre shuffle: ");
+            //System.out.println(customers);
             // shuffle customers out of order
             Collections.shuffle(customers);
-            System.out.println("customers post shuffle: ");
-            System.out.println(customers);
+            //System.out.println("customers post shuffle: ");
+            //System.out.println(customers);
 
             //Order order1 = new Order(j);
 
             // customer orders in new shuffled order
             for(int j = 0; j < customers.size(); j++) {
                 // new Order object given to store from each customer
+                System.out.println("Order Number: " + j);
 
                 if(customers.get(j) == 1) { // casual
                     Order order1 = new Order(j);
                     Customer casual = new CasualCustomer(Integer.toString(i));
-                    casual.orderItems(order1);
+                    casual.orderItems(order1); // order1 should get overwritten
+                    shop.respondToOrder(order1);
                 }
+
+                if(customers.get(j) == 2) { // business
+                    Order order1 = new Order(j);
+                    Customer business = new BuisnessCustomer(Integer.toString(i));
+                    business.orderItems(order1); // order1 should get overwritten
+                    shop.respondToOrder(order1);
+                }
+
+                if(customers.get(j) == 3) { // catering
+                    Order order1 = new Order(j);
+                    Customer cater = new CateringCustomer(Integer.toString(i));
+                    cater.orderItems(order1); // order1 should get overwritten
+                    shop.respondToOrder(order1);
+                }
+                // implement where if customer does not get their original order, we take a note of it
+                // implement where if stocks all drop to zero, continue to next day
             }
         }
 
