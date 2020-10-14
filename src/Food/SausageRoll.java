@@ -1,9 +1,12 @@
 package Food;
 
+import Food.Factories.SausageExtrasFactory;
+
 public class SausageRoll extends defaultRoll{
 
     public SausageRoll() {
-        super("sausage roll");
+        super("sau", "Roll wrapped around a plump sausage",
+                "sausage roll", new SausageExtrasFactory());
     }
 
     @Override
