@@ -9,15 +9,15 @@ import Food.Roll;
 public class MyUnitTest {
 
     @Test
-    public void testStock() {
+    public void testDayNumber() {
         GourmetFoodShop testStore = new GourmetFoodShop();
+	
 
-        //ArrayList<Roll> result = testStore.getStock();
+	int result = testStore.dayNumber;
 
-	//expectedResults = 
+	int expectedResult = 1;
 
-        //assertEquals(0, result);
-
+        assertEquals(result, expectedResult);
     }
     @Test
     public void test2() {

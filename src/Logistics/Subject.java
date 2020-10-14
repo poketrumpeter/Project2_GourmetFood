@@ -1,3 +1,4 @@
+package Logistics;
 //Subject Interface for Observer Implementation
 public interface Subject {
 	//Function declerations to register, remove and notify observers from an instance of Observer

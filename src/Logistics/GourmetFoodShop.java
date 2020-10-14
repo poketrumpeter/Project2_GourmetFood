@@ -3,6 +3,7 @@ package Logistics;
 
 import Food.*;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class GourmetFoodShop implements Store, Subject{
     Inventory inventory;
     ArrayList<Order> dailyOrders;
     int dailyCustomers;
-    int dayNumber;
+    public int dayNumber;
     String day;
     int numOrders;
     boolean openForBusiness;
@@ -78,7 +79,8 @@ public class GourmetFoodShop implements Store, Subject{
 	//need to clear dailyOrders array
 
 	//Part of Observer Design Pattern implementation
-        String message = "Day Number "+ day.toString();
+	String dayString = String.valueOf(day);
+        String message = "Day Number "+ dayString + "\n";
         this.notifyObservers(message);
 
 

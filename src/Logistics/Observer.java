@@ -1,3 +1,4 @@
+package Logistics;
 //Part of Obeserver Design Pattern implementation
 public interface Observer 
 {
