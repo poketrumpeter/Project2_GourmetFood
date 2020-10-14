@@ -1,4 +1,5 @@
 import Food.*;
+
 import Logistics.GourmetFoodShop;
 import Logistics.Order;
 import Logistics.Store;
@@ -11,6 +12,7 @@ public class testShop {
 
     public static void main(String[] args) {
 
+        defaultRollFactory rollFactory = new defaultRollFactory();
 
 //        Roll jelly = new jellyRoll();
 //        Roll pastry = new pastryRoll();
@@ -42,6 +44,7 @@ public class testShop {
         Artemis.orderItems(order3);
 
         order1.displayOrder();
+
         newStore.respondToOrder(order1);
 
         order2.displayOrder();

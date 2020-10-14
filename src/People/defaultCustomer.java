@@ -43,6 +43,22 @@ public abstract class defaultCustomer implements Customer{
         return null;
     }
 
+    Roll orderRoll(String type){
+
+        switch (type){
+            case "pastry":
+                return new pastryRoll();
+            case "sausage":
+                return new sausageRoll();
+            case "jelly":
+                return new jellyRoll();
+            case "spring":
+                return new springRoll();
+            case "egg":
+                return new eggRoll();
+        }
+        return null;
+    }
 
     @Override
     public void leave() { //Method to have Customer Leave Shop. Tracking customers in the shop
