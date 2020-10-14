@@ -38,7 +38,7 @@ public class Inventory {
         if (item != null) {
             int qty = item.getQty();
 
-            if (qtyOrdered <= qty) { //We have enough and wont edn with 0
+            if (qtyOrdered <= qty) { //We have enough and wont end with 0
                 if (qtyOrdered == qty) { //We will end with 0 stock
                     //Will need to order more stock
                     System.out.println("Out of Stock");

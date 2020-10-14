@@ -43,33 +43,43 @@ public class GourmetFoodShop implements Store{
         if(day != 1) {
             //loop through stocks
 
-            // CHANGE THIS TO MEET HASH MAP REQUIREMENTS
-            /*
-            for(int i = 0; i < 5; i++) {
+            //for(Map.Entry<String, InventoryItem> rollTypeStock : inventory) {
                 //if that roll type is out of stock
-                if(rollStock[i] == 0) {
-                    //restock
-                    rollStock[i] = 30;
-                }
+            if(inventory.checkStock("jel") == 0) {
+                //restock
+                inventory.restockItem("jel");
             }
-            */
+            if(inventory.checkStock("sau") == 0) {
+                //restock
+                inventory.restockItem("sau");
+            }
+            if(inventory.checkStock("egg") == 0) {
+                //restock
+                inventory.restockItem("egg");
+            }
+            if(inventory.checkStock("pas") == 0) {
+                //restock
+                inventory.restockItem("pas");
+            }
+            if(inventory.checkStock("spr") == 0) {
+                //restock
+                inventory.restockItem("spr");
+            }
+            //}
 
         }
     }
 
 
-    //dont think we need this
+    // Don't think we need this
     @Override
     public void close() {
-
         //Close the shop and increment the day and replenish stock if it is out
         dayNumber++;
-
-        //count through stock checking to see if any is out
     }
 
     @Override
-    public void respondToOrder(Order newOrder) {
+    public boolean respondToOrder(Order newOrder) {
        /*
         method to check stock to make sure we could fulfill the order, If true, respond to Customer
         to let them buy the rolls and so we can record the order
@@ -93,9 +103,37 @@ public class GourmetFoodShop implements Store{
             this.dailyOrders.add(newOrder);
         }
 
-        System.out.println();
+        //System.out.println("Inventory: ");
         displayStock();
 
+        return stockAvailable;
+    }
+
+    public boolean shouldClose() {
+        boolean closeShop = true;
+        /*
+        for(Map.Entry<String, InventoryItem> rollTypeStock : inventory) {
+            if(inventory.checkStock(rollTypeStock.getKey()) >= 0) {
+                closeShop = false;
+            }
+        }
+        */
+        if(inventory.checkStock("jel") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("sau") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("egg") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("pas") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("spr") >= 0) {
+            closeShop = false;
+        }
+        return closeShop;
     }
 
     public void displayStock(){
