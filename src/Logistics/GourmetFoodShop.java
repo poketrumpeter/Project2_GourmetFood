@@ -5,7 +5,6 @@ import Food.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 //import sun.jvm.hotspot.oops.HeapPrinter;
 
@@ -40,6 +39,7 @@ public class GourmetFoodShop implements Store{
     @Override
     public void open(int day) {
         this.dayNumber = day;
+        this.openForBusiness = true;
 
         //if the day isn't the first day, check to restock
         if(day != 1) {
@@ -57,7 +57,7 @@ public class GourmetFoodShop implements Store{
     public void close() {
 
         //Close the shop and increment the day and replenish stock if it is out
-        dayNumber++;
+        //dayNumber++;
         this.openForBusiness = false;
         //count through stock checking to see if any is out
     }
@@ -81,12 +81,14 @@ public class GourmetFoodShop implements Store{
             status = inventory.decrementInventory(item.roll.getKey(), item.quantity);
         }
         //if there was stock to complete the order, save order
-        System.out.println();
-        displayStock();
+        //System.out.println();
+        //displayStock();
 
         if (status.getStockAvailible()){
             newOrder.setFulfilled(true);
             this.dailyOrders.add(newOrder);
+            //System.out.println();
+            //displayStock();
             return status;
         }
         else{
@@ -101,7 +103,34 @@ public class GourmetFoodShop implements Store{
         }
     }
 
+    public boolean shouldClose() {
+        boolean closeShop = true;
+
+        if(inventory.checkStock("jel") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("sau") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("egg") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("pas") >= 0) {
+            closeShop = false;
+        }
+        if(inventory.checkStock("spr") >= 0) {
+            closeShop = false;
+        }
+        openForBusiness = !closeShop;
+        return closeShop;
+    }
+
+    public boolean isOpen() {
+        return openForBusiness;
+    }
+
     public void displayStock(){
+        System.out.println("Inventory Count: ");
         inventory.displayInventory();
 
     }

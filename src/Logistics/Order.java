@@ -61,6 +61,14 @@ public class Order {
         return orderTotal;
     }
 
+    public int getNumberOfRolls() {
+        int numRolls = 0;
+        for (OrderItem item : this.items) {
+            numRolls += item.quantity;
+        }
+        return numRolls;
+    }
+
     public String getItemType(int index){
         return items.get(index).roll.getKey();
     }
@@ -72,10 +80,13 @@ public class Order {
     public void displayOrder() {
 
         for (OrderItem item : this.items) {
-            System.out.println(item.quantity + " - " + item.roll.getName() + ": " + item.roll.cost());
+            System.out.print(item.quantity + " - " + item.roll.getName() + ": "); // + item.roll.cost());
+            System.out.printf("%.2f", item.roll.cost());
+            System.out.println();
         }
 
-        System.out.println("Total Order cost is: " + orderTotal);
+        System.out.print("Total Order cost is: ");
+        System.out.printf("%.2f", orderTotal);
 
         System.out.println();
     }

@@ -1,16 +1,12 @@
 package People;
 
-import Food.Roll;
 import Logistics.Order;
 import Logistics.StockStatus;
-import Logistics.Store;
 
-import java.util.ArrayList;
+public class BusinessCustomer extends defaultCustomer{
 
-public class BuisnessCustomer extends defaultCustomer{
-
-    public BuisnessCustomer(String name) {
-        super("buisness", name);
+    public BusinessCustomer(String name) {
+        super("business", name);
     }
 
     //Buisness Customer specific method of buying Rolls

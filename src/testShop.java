@@ -4,7 +4,7 @@ import Logistics.GourmetFoodShop;
 import Logistics.Order;
 import Logistics.StockStatus;
 import Logistics.Store;
-import People.BuisnessCustomer;
+import People.BusinessCustomer;
 import People.CasualCustomer;
 import People.CateringCustomer;
 import People.Customer;
@@ -32,7 +32,7 @@ public class testShop {
 //
 //
         Customer tim = new CasualCustomer("Tim");
-        Customer Chloe = new BuisnessCustomer("Chloe");
+        Customer Chloe = new BusinessCustomer("Chloe");
         Customer Artemis = new CateringCustomer("Artemis");
 
         Order order1 = new Order(101);

@@ -5,7 +5,6 @@ import Logistics.StockStatus;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Random;
 
 public class CateringCustomer extends defaultCustomer{
 
@@ -68,8 +67,5 @@ public class CateringCustomer extends defaultCustomer{
 
             currentOrder.addItems(newRollID, 1);
         }
-
-
-
     }
 }
